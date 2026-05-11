@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated manuscript."
+title: "Spatial Beam Prediction Under Sparse Beam-Level Blockage for 5G-Advanced and Future 6G"
+authors:
+  - family-names: "Fatima"
+    given-names: "Maheen"
+  - family-names: "Saeidi"
+    given-names: "Mohammad Amin"
+  - family-names: "Tabassum"
+    given-names: "Hina"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-05-05"

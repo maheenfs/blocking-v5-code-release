@@ -1,0 +1,9 @@
+scope,label,pattern,blocked_beam_index,method,metric,mean_test_primary_%,seed_std_pp,seed_n,blocked_levels
+representative,P1 B6,1,6,MAX-SETB,primary,33.255556,0.425680,3,20+40+60+80+100
+representative,P1 B6,1,6,NN-ANGLE,primary,66.066666,0.144338,3,20+40+60+80+100
+representative,P2 B2,2,2,MAX-SETB,primary,33.716667,0.305505,3,20+40+60+80+100
+representative,P2 B2,2,2,NN-ANGLE,primary,66.227778,0.905129,3,20+40+60+80+100
+all_blocked_beams,P1 all beams,1,,MAX-SETB,primary,28.422222,0.330947,3,20+40+60+80+100
+all_blocked_beams,P1 all beams,1,,NN-ANGLE,primary,63.054000,0.289844,3,20+40+60+80+100
+all_blocked_beams,P2 all beams,2,,MAX-SETB,primary,28.717778,0.229525,3,20+40+60+80+100
+all_blocked_beams,P2 all beams,2,,NN-ANGLE,primary,63.264000,0.528061,3,20+40+60+80+100

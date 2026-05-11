@@ -1,0 +1,248 @@
+{
+  "pipeline_version": "blocking_v5.0",
+  "results_schema_version": "v4.1",
+  "values_cube_path": "/Users/maheenfatima/LocalProjects/Blocking_Final/blocking_v5/release/blocking_v5_code/VIV0R4_116_00.npy",
+  "outdir": "/Users/maheenfatima/LocalProjects/Blocking_Final/blocking_v5/release/blocking_v5_code/results",
+  "run_name_prefix": "blocking_v5_seed123",
+  "run_name": "blocking_v5_seed123_P1_blockB7",
+  "setb_pattern": 1,
+  "blocked_setb_index": 7,
+  "blocked_beam_name": "B7",
+  "blockage_model": "underlying_tx_consistent",
+  "stages": [
+    "prepare",
+    "baseline",
+    "finetune",
+    "aggregate"
+  ],
+  "experiments": [
+    "BL-AG",
+    "BL-AW",
+    "FT",
+    "MAX-SETB",
+    "NN-ANGLE"
+  ],
+  "blockage_levels": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100
+  ],
+  "split": {
+    "train_frac": 0.9,
+    "val_frac": 0.05,
+    "test_frac": 0.05
+  },
+  "training": {
+    "seed": 123,
+    "seeds": [
+      123
+    ],
+    "batch_size": 256,
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "kpi_loss_weight": 0.0,
+    "pretrain_epochs": 20,
+    "aware_epochs": 20,
+    "ft_epoch_sweep": [
+      1,
+      2,
+      3,
+      5,
+      8,
+      10,
+      12
+    ],
+    "ft_freeze_modes": [
+      "no_freeze",
+      "freeze_cnn",
+      "freeze_head",
+      "freeze_all"
+    ],
+    "train_fracs_sweep": [
+      0.0,
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.1,
+      0.5,
+      1.0
+    ],
+    "ft_sampling": "with_replacement"
+  },
+  "kpi": {
+    "topks": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "margins_db": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "primary_topk": 3,
+    "primary_margin_db": 1
+  },
+  "plotting": {
+    "baseline_ft_epoch_for_plots": 10,
+    "metric_plot_keys": [
+      "primary"
+    ],
+    "plot_all_metric_families": false,
+    "run_plot_train_fracs": [
+      0.01
+    ],
+    "run_fraction_sweep_train_fracs": [
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.1,
+      0.5,
+      1.0
+    ],
+    "run_plot_blockages": [
+      20,
+      80,
+      100
+    ],
+    "run_plot_families": [
+      "epoch_budget_by_freeze",
+      "blockage_by_freeze",
+      "freeze_mode_best",
+      "train_fraction_comparison",
+      "train_fraction_by_focus_blockage"
+    ],
+    "plot_all_run_plot_families": false,
+    "plot_multi_kpi": true,
+    "multi_kpi_metric_keys": [
+      "top1",
+      "top1_m1db",
+      "top2_m1db",
+      "top3_m0db",
+      "primary",
+      "top3_m2db"
+    ],
+    "multi_kpi_blockages": [
+      20,
+      80,
+      100
+    ],
+    "multi_kpi_train_fracs": [
+      0.01
+    ],
+    "plot_multi_kpi_sweep": false,
+    "plot_loss_curves": true,
+    "plot_multiseed_run_plots": true,
+    "multiseed_run_plot_families": [
+      "epoch_budget_by_freeze",
+      "blockage_by_freeze",
+      "freeze_mode_best",
+      "train_fraction_comparison",
+      "train_fraction_by_focus_blockage",
+      "multi_kpi"
+    ],
+    "plot_all_multiseed_run_plot_families": false,
+    "comparison_primary_train_frac": 0.01,
+    "comparison_extra_train_fracs": [],
+    "comparison_fraction_sweep_train_fracs": [
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.1,
+      0.5,
+      1.0
+    ],
+    "comparison_focus_blockages": [
+      20,
+      80,
+      100
+    ],
+    "comparison_plot_families": [
+      "baseline_bl_ag_vs_blockage",
+      "baseline_bl_aw_vs_blockage",
+      "ft_freeze_cnn_vs_blockage",
+      "all_methods_blockage",
+      "non_ml_baselines",
+      "train_fraction_comparison",
+      "ft_vs_epochs",
+      "freeze_comparison",
+      "baseline_compared_with_blockage",
+      "ft_freeze_cnn_compared_with_blockage",
+      "all_methods_compared_with_blockage",
+      "cross_train_fraction_comparison"
+    ],
+    "plot_all_comparison_families": false,
+    "runner_postprocessing": {
+      "after_each_run": [],
+      "after_batch": [
+        "selected"
+      ]
+    }
+  },
+  "representative_beams": {
+    "pattern_1": 6,
+    "pattern_2": 2
+  },
+  "scenario_provenance": {
+    "pattern_comparisons": {
+      "best": {
+        "p1_beam": 4,
+        "p2_beam": 0
+      },
+      "mid": {
+        "p1_beam": 6,
+        "p2_beam": 2
+      },
+      "worst": {
+        "p1_beam": 7,
+        "p2_beam": 3
+      }
+    },
+    "within_pattern": {
+      "P1": [
+        1,
+        3,
+        4,
+        6,
+        7
+      ],
+      "P2": [
+        0,
+        2,
+        3,
+        5,
+        7
+      ]
+    }
+  },
+  "config_source": "/Users/maheenfatima/LocalProjects/Blocking_Final/blocking_v5/release/blocking_v5_code/config.json",
+  "system_settings": {
+    "device": "cpu",
+    "torch_num_threads": null,
+    "torch_num_interop_threads": null,
+    "matplotlib_cache_dir": "./.cache/matplotlib",
+    "xdg_cache_dir": "./.cache",
+    "dashboard": {
+      "enabled": true,
+      "path": "auto",
+      "refresh_seconds": 5,
+      "show_resource_monitor": true,
+      "show_latest_epochs": 5,
+      "show_plotting_plan": true
+    },
+    "notes": {
+      "device": "Use cpu to reproduce the paper default. Optional local choices are auto, cuda, cuda:0, mps, or cpu.",
+      "torch_num_threads": "Set to an integer on shared CPU systems, or null to let PyTorch choose.",
+      "matplotlib_cache_dir": "Local plot font/cache folder. This does not affect results.",
+      "dashboard": "Set enabled to false or run with --no-dashboard if the local HTML monitor is not needed."
+    }
+  }
+}

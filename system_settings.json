@@ -1,0 +1,21 @@
+{
+  "device": "cpu",
+  "torch_num_threads": null,
+  "torch_num_interop_threads": null,
+  "matplotlib_cache_dir": "./.cache/matplotlib",
+  "xdg_cache_dir": "./.cache",
+  "dashboard": {
+    "enabled": true,
+    "path": "auto",
+    "refresh_seconds": 5,
+    "show_resource_monitor": true,
+    "show_latest_epochs": 5,
+    "show_plotting_plan": true
+  },
+  "notes": {
+    "device": "Use cpu to reproduce the paper default. Optional local choices are auto, cuda, cuda:0, mps, or cpu.",
+    "torch_num_threads": "Set to an integer on shared CPU systems, or null to let PyTorch choose.",
+    "matplotlib_cache_dir": "Local plot font/cache folder. This does not affect results.",
+    "dashboard": "Set enabled to false or run with --no-dashboard if the local HTML monitor is not needed."
+  }
+}

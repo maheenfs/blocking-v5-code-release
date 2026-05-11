@@ -1,0 +1,25 @@
+{
+  "pipeline_version": "blocking_v5.0",
+  "values_cube_path": "/Users/maheenfatima/LocalProjects/Blocking_Final/blocking_v5/release/blocking_v5_code/VIV0R4_116_00.npy",
+  "values_cube_shape": [
+    120000,
+    32,
+    8
+  ],
+  "setb_pattern": 1,
+  "blocked_setb_col": 7,
+  "blockage_model": "underlying_tx_consistent",
+  "setb_feature_mode": "max_over_rx",
+  "global_min_db": -176.90899658203125,
+  "split_fracs": {
+    "train_frac": 0.9,
+    "val_frac": 0.05,
+    "test_frac": 0.05
+  },
+  "split_sizes": {
+    "train": 108000,
+    "val": 6000,
+    "test": 6000
+  },
+  "seed": 123
+}

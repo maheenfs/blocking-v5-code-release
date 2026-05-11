@@ -1,0 +1,48 @@
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local OS/editor files
+.DS_Store
+*.swp
+*.swo
+
+# Generated outputs. The release input tensor, curated results, and stored
+# baseline weights are included intentionally so the archived code can run
+# standalone.
+quick_verify_config.json
+quick_verify_configs/
+quick_verify_results/
+results/dashboard.html
+results/active_run.json
+results/batch_live_progress.*
+results/hardware_snapshot.json
+results/logs/
+results/**/data/X_setb.npy
+results/**/data/y_tx.npy
+results/**/data/rsrp_tx.npy
+results/**/jobs/**/weights_best.pt
+plots/organized_plots/
+plots/verification_selected_plots*/
+build/
+tmp/
+.cache/
+.mplconfig/
+
+# Local progress and logs
+*.pid
+*.log
+dashboard.html
+active_run.json
+batch_live_progress.*
+plotting_live_progress.json
+plots/selected_plots/selected_plots_generation_status.csv
+
+# LaTeX/generated manuscript artifacts if copied locally
+*.aux
+*.bbl
+*.blg
+*.out
+*.xdv

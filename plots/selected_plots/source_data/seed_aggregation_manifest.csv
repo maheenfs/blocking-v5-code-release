@@ -1,0 +1,11 @@
+pattern,blocked_beam_index,blocked_beam,seed_count,seed_values,source_run_dirs,error_bar_definition
+1,1,B1,3,123+456+789,blocking_v5_seed123_P1_blockB1|blocking_v5_seed456_P1_blockB1|blocking_v5_seed789_P1_blockB1,mean +/- one sample standard deviation across seeds
+1,3,B3,3,123+456+789,blocking_v5_seed123_P1_blockB3|blocking_v5_seed456_P1_blockB3|blocking_v5_seed789_P1_blockB3,mean +/- one sample standard deviation across seeds
+1,4,B4,3,123+456+789,blocking_v5_seed123_P1_blockB4|blocking_v5_seed456_P1_blockB4|blocking_v5_seed789_P1_blockB4,mean +/- one sample standard deviation across seeds
+1,6,B6,3,123+456+789,blocking_v5_seed123_P1_blockB6|blocking_v5_seed456_P1_blockB6|blocking_v5_seed789_P1_blockB6,mean +/- one sample standard deviation across seeds
+1,7,B7,3,123+456+789,blocking_v5_seed123_P1_blockB7|blocking_v5_seed456_P1_blockB7|blocking_v5_seed789_P1_blockB7,mean +/- one sample standard deviation across seeds
+2,0,B0,3,123+456+789,blocking_v5_seed123_P2_blockB0|blocking_v5_seed456_P2_blockB0|blocking_v5_seed789_P2_blockB0,mean +/- one sample standard deviation across seeds
+2,2,B2,3,123+456+789,blocking_v5_seed123_P2_blockB2|blocking_v5_seed456_P2_blockB2|blocking_v5_seed789_P2_blockB2,mean +/- one sample standard deviation across seeds
+2,3,B3,3,123+456+789,blocking_v5_seed123_P2_blockB3|blocking_v5_seed456_P2_blockB3|blocking_v5_seed789_P2_blockB3,mean +/- one sample standard deviation across seeds
+2,5,B5,3,123+456+789,blocking_v5_seed123_P2_blockB5|blocking_v5_seed456_P2_blockB5|blocking_v5_seed789_P2_blockB5,mean +/- one sample standard deviation across seeds
+2,7,B7,3,123+456+789,blocking_v5_seed123_P2_blockB7|blocking_v5_seed456_P2_blockB7|blocking_v5_seed789_P2_blockB7,mean +/- one sample standard deviation across seeds
