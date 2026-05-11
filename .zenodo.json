@@ -1,0 +1,38 @@
+{
+  "title": "Spatial Beam Prediction Under Sparse Beam-Level Blockage for 5G-Advanced and Future 6G: Blocking V5 Code Release",
+  "upload_type": "software",
+  "description": "Blocking V5 release containing source code, packaged result tables, selected manuscript plots, the packaged dataset tensor, stored baseline weights, and verification instructions for the sparse beam-level blockage experiments.",
+  "creators": [
+    {
+      "name": "Fatima, Maheen"
+    },
+    {
+      "name": "Saeidi, Mohammad Amin"
+    },
+    {
+      "name": "Tabassum, Hina"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "keywords": [
+    "beam prediction",
+    "mmWave",
+    "beam blockage",
+    "fine-tuning",
+    "5G-Advanced",
+    "6G"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/maheenfs/blocking-v5-code-release",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/maheenfs/blocking-v5-code-release/releases/tag/v1.0.0",
+      "relation": "isVersionOf",
+      "scheme": "url"
+    }
+  ]
+}
