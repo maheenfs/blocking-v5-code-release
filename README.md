@@ -1,4 +1,6 @@
-# Blocking V5 Code Release
+# 6G Spatial Beam Prediction Under Sparse Beam-Level Blockage
+
+Blocking V5 code release.
 
 This folder contains the code, data tensor, selected figures, curated result
 tables, split metadata, and reusable baseline weights for the Blocking V5

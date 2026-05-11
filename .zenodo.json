@@ -1,5 +1,5 @@
 {
-  "title": "Spatial Beam Prediction Under Sparse Beam-Level Blockage for 5G-Advanced and Future 6G: Blocking V5 Code Release",
+  "title": "6G Spatial Beam Prediction Under Sparse Beam-Level Blockage",
   "upload_type": "software",
   "description": "Blocking V5 release containing source code, packaged result tables, selected manuscript plots, the packaged dataset tensor, stored baseline weights, and verification instructions for the sparse beam-level blockage experiments.",
   "creators": [
@@ -9,6 +9,15 @@
     },
     {
       "name": "Saeidi, Mohammad Amin"
+    },
+    {
+      "name": "Muhammad, Fahad Syed"
+    },
+    {
+      "name": "Shehzad, M. Karam"
+    },
+    {
+      "name": "Jayaweera, Nalin"
     },
     {
       "name": "Tabassum, Hina"

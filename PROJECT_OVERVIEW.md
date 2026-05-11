@@ -1,5 +1,7 @@
 # Blocking V5 Project Overview
 
+Paper title: 6G Spatial Beam Prediction Under Sparse Beam-Level Blockage.
+
 ## Project Goal
 
 Blocking V5 studies how sparse beam-level blockage affects beam prediction and
