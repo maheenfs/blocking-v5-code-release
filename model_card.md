@@ -84,6 +84,12 @@ the main-paper baseline set.
 
 ## Reproducibility
 
+Persistent release identifier:
+
+```text
+https://doi.org/10.5281/zenodo.20128179
+```
+
 The runner records:
 
 - seed in result rows

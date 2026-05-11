@@ -12,6 +12,12 @@ The package is self-contained: the default dataset tensor, code,
 configuration, selected plots, curated results, and reusable baseline weights
 are included here.
 
+Persistent release identifier:
+
+```text
+https://doi.org/10.5281/zenodo.20128179
+```
+
 ## Experiment Protocol
 
 The default protocol is defined in `config.json`.
@@ -178,5 +184,9 @@ These numbers are computed from the packaged `results/*/results.csv` files.
 
 ## Publication Notes
 
-The manuscript availability statements should cite the exact repository,
-archive, release tag, and persistent identifier used for distribution.
+The manuscript availability statement should cite the exact repository, release
+tag, and persistent identifier used for distribution:
+
+- DOI: `10.5281/zenodo.20128179`
+- GitHub release: `https://github.com/maheenfs/blocking-v5-code-release/releases/tag/v1.0.0`
+- Repository: `https://github.com/maheenfs/blocking-v5-code-release`

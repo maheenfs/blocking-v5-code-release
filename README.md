@@ -4,6 +4,12 @@ This folder contains the code, data tensor, selected figures, curated result
 tables, split metadata, and reusable baseline weights for the Blocking V5
 beam-prediction experiments.
 
+## Release Identifier
+
+- Zenodo DOI: [10.5281/zenodo.20128179](https://doi.org/10.5281/zenodo.20128179)
+- GitHub release: [v1.0.0](https://github.com/maheenfs/blocking-v5-code-release/releases/tag/v1.0.0)
+- Citation metadata: [CITATION.cff](CITATION.cff)
+
 ## What Is Included
 
 ### Code And Configuration
