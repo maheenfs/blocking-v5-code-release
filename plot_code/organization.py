@@ -360,7 +360,7 @@ def organize_results(
             )
 
     manifest_path = organized_root / "organized_plot_manifest.csv"
-    with manifest_path.open("w", newline="") as handle:
+    with manifest_path.open("w", newline="", encoding="utf-8") as handle:
         fieldnames = [
             "organized_path",
             "source_path",

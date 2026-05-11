@@ -142,7 +142,7 @@ def load_plot_style(path: str | Path = PLOT_CONFIG_PATH) -> dict[str, object]:
     path = Path(path)
     if not path.exists():
         return config
-    with path.open() as handle:
+    with path.open(encoding="utf-8") as handle:
         loaded = json.load(handle)
     if not isinstance(loaded, dict):
         raise ValueError(f"Plot config must contain a JSON object: {path}")

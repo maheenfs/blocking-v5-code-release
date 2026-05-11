@@ -44,10 +44,10 @@ def fmt(value: float) -> str:
 def load_test_split(run_dir: Path) -> Tuple[np.ndarray, np.ndarray, np.ndarray, float, int]:
     data_dir = run_dir / "data"
     meta = json.loads((data_dir / "meta.json").read_text(encoding="utf-8"))
-    test_idx = np.load(data_dir / "test_idx.npy")
-    features = np.load(data_dir / "X_setb.npy")[test_idx]
-    labels = np.load(data_dir / "y_tx.npy")[test_idx]
-    rsrp_tx = np.load(data_dir / "rsrp_tx.npy")[test_idx]
+    test_idx = np.load(data_dir / "test_idx.npy", allow_pickle=False)
+    features = np.load(data_dir / "X_setb.npy", allow_pickle=False)[test_idx]
+    labels = np.load(data_dir / "y_tx.npy", allow_pickle=False)[test_idx]
+    rsrp_tx = np.load(data_dir / "rsrp_tx.npy", allow_pickle=False)[test_idx]
     return features, labels, rsrp_tx, float(meta["global_min_db"]), int(meta.get("seed", -1))
 
 

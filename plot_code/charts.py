@@ -152,7 +152,16 @@ def heatmap(
 ) -> Path:
     fig, ax = plt.subplots(figsize=figure_size("heatmap"))
     data = np.array(matrix, dtype=float)
-    image = ax.imshow(data, aspect="auto", cmap="viridis", vmin=np.nanmin(data), vmax=np.nanmax(data))
+    finite_values = data[np.isfinite(data)]
+    if finite_values.size:
+        vmin = float(finite_values.min())
+        vmax = float(finite_values.max())
+        if vmin == vmax:
+            vmin -= 1.0
+            vmax += 1.0
+    else:
+        vmin, vmax = 0.0, 1.0
+    image = ax.imshow(data, aspect="auto", cmap="viridis", vmin=vmin, vmax=vmax)
     ax.set_xticks(np.arange(len(xlabels)))
     ax.set_xticklabels(xlabels)
     ax.set_yticks(np.arange(len(ylabels)))
@@ -162,7 +171,8 @@ def heatmap(
         for col_idx in range(data.shape[1]):
             value = data[row_idx, col_idx]
             if value == value:
-                ax.text(col_idx, row_idx, f"{value:.1f}", ha="center", va="center", color="white", fontsize=8)
+                color = "white" if float(value) <= (vmin + vmax) / 2.0 else "#111111"
+                ax.text(col_idx, row_idx, f"{value:.1f}", ha="center", va="center", color=color, fontsize=8)
     fig.colorbar(image, ax=ax, label="Accuracy (%)")
     top_band_layout(fig, ax, handles=[], labels=[], plot_id=plot_id)
     return save_figure(fig, path, plot_id=plot_id)

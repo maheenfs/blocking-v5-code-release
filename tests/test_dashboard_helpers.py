@@ -14,10 +14,12 @@ from dashboard.artifacts import (
     plotting_status_rows,
     resume_rows,
 )
+from dashboard.formatting import format_seconds as format_dashboard_seconds
 from dashboard.plotting_progress import selection_summary
 from dashboard.render import write_dashboard_html
 from dashboard.resources import runtime_metrics_payload
 from experiment.config import load_config
+from experiment.io import format_seconds as format_pipeline_seconds
 from plot_code.config import PlotSelection
 from runner.pipeline import dashboard_snapshot
 
@@ -159,6 +161,12 @@ class DashboardHelperTests(unittest.TestCase):
         self.assertGreater(float(snapshot["current_job_eta_s"]), 2800.0)
         self.assertGreater(float(snapshot["batch_eta_s"]), 14500.0)
         self.assertIn("resume-skip rows are ignored", str(snapshot["job_duration_basis"]))
+
+    def test_seconds_formatting_rolls_over_cleanly(self) -> None:
+        self.assertEqual(format_pipeline_seconds(59.6), "1:00")
+        self.assertEqual(format_pipeline_seconds(3599.6), "1:00:00")
+        self.assertEqual(format_dashboard_seconds(59.6), "1:00")
+        self.assertEqual(format_dashboard_seconds("not-a-number"), "n/a")
 
 
 def _progress_row(name: str, *, seed: int, status: str, elapsed_s: str = "") -> dict[str, object]:

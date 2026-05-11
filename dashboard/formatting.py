@@ -9,13 +9,11 @@ from typing import Sequence
 def format_seconds(seconds: object) -> str:
     """Format seconds as m:ss or h:mm:ss; return n/a for missing values."""
     try:
-        total = max(0.0, float(seconds))
+        total_seconds = int(round(max(0.0, float(seconds))))
     except Exception:
         return "n/a"
-    hours = int(total // 3600)
-    total -= hours * 3600
-    minutes = int(total // 60)
-    seconds_int = int(round(total - minutes * 60))
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds_int = divmod(remainder, 60)
     if hours > 0:
         return f"{hours:d}:{minutes:02d}:{seconds_int:02d}"
     return f"{minutes:d}:{seconds_int:02d}"

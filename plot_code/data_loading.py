@@ -26,14 +26,14 @@ def read_csv(path: str | Path) -> list[dict[str, str]]:
     path = Path(path)
     if not path.exists():
         return []
-    with path.open(newline="") as handle:
+    with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
 
 
 def write_csv(path: str | Path, rows: list[dict[str, object]], fieldnames: list[str]) -> Path:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="") as handle:
+    with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)

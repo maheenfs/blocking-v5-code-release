@@ -50,7 +50,7 @@ class ReleaseExperimentSmokeTests(unittest.TestCase):
         dataset_path = RELEASE_ROOT / "VIV0R4_116_00.npy"
 
         self.assertTrue(dataset_path.exists(), "Release dataset is missing.")
-        values = np.load(dataset_path, mmap_mode="r")
+        values = np.load(dataset_path, mmap_mode="r", allow_pickle=False)
 
         self.assertEqual(values.shape, (120000, 32, 8))
         self.assertEqual(str(values.dtype), "float32")

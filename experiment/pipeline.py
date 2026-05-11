@@ -103,6 +103,25 @@ def read_csv_rows(path: Path) -> List[Dict[str, str]]:
         return [dict(row) for row in csv.DictReader(handle)]
 
 
+def load_npy(path: Path, **kwargs: Any) -> np.ndarray:
+    """Load a NumPy array without enabling object-pickle payloads."""
+    return np.load(path, allow_pickle=False, **kwargs)
+
+
+def load_torch_state_dict(path: Path) -> Dict[str, Any]:
+    """Load a local model state dict while asking new PyTorch versions to avoid pickle objects."""
+    try:
+        payload = torch.load(path, map_location="cpu", weights_only=True)
+    except TypeError:
+        # PyTorch versions before weights_only still need to load these local
+        # release checkpoints. The release never accepts checkpoint paths from
+        # untrusted network input.
+        payload = torch.load(path, map_location="cpu")
+    if not isinstance(payload, dict):
+        raise ValueError(f"Expected a Torch state dict in {path}, got {type(payload).__name__}")
+    return payload
+
+
 def files_exist(directory: Path, names: Sequence[str]) -> bool:
     """Check whether a stage already wrote the full set of files it is expected to produce."""
     return all((directory / name).exists() for name in names)
@@ -126,11 +145,9 @@ def format_metric(value: object, *, ndigits: int = 6) -> str:
 
 def format_seconds(seconds: float) -> str:
     """Format elapsed seconds as m:ss or h:mm:ss for progress displays."""
-    total = max(0.0, float(seconds))
-    hours = int(total // 3600)
-    total -= hours * 3600
-    minutes = int(total // 60)
-    seconds_int = int(round(total - minutes * 60))
+    total_seconds = int(round(max(0.0, float(seconds))))
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds_int = divmod(remainder, 60)
     if hours > 0:
         return f"{hours:d}:{minutes:02d}:{seconds_int:02d}"
     return f"{minutes:d}:{seconds_int:02d}"
@@ -422,11 +439,12 @@ def build_setb_mapping_rows(pattern: int) -> List[Dict[str, object]]:
 
 def load_values_cube(path: Path) -> np.ndarray:
     """Load the input values cube from either `.npy` or `.npz` packaging."""
-    loaded = np.load(path)
+    loaded = load_npy(path)
     if isinstance(loaded, np.lib.npyio.NpzFile):
-        if "values_cube" not in loaded.files:
-            raise ValueError(f"{path} is missing 'values_cube'. Available keys: {loaded.files}")
-        array = loaded["values_cube"]
+        with loaded:
+            if "values_cube" not in loaded.files:
+                raise ValueError(f"{path} is missing 'values_cube'. Available keys: {loaded.files}")
+            array = loaded["values_cube"]
     else:
         array = loaded
     if array.ndim != 3:
@@ -1282,12 +1300,12 @@ def load_prepared_data(run_dir: Path) -> PreparedData:
         )
     meta = json.loads((data_dir / "meta.json").read_text(encoding="utf-8"))
     return PreparedData(
-        features=np.load(data_dir / "X_setb.npy"),
-        labels=np.load(data_dir / "y_tx.npy"),
-        rsrp_tx=np.load(data_dir / "rsrp_tx.npy"),
-        train_idx=np.load(data_dir / "train_idx.npy"),
-        val_idx=np.load(data_dir / "val_idx.npy"),
-        test_idx=np.load(data_dir / "test_idx.npy"),
+        features=load_npy(data_dir / "X_setb.npy"),
+        labels=load_npy(data_dir / "y_tx.npy"),
+        rsrp_tx=load_npy(data_dir / "rsrp_tx.npy"),
+        train_idx=load_npy(data_dir / "train_idx.npy"),
+        val_idx=load_npy(data_dir / "val_idx.npy"),
+        test_idx=load_npy(data_dir / "test_idx.npy"),
         global_min_db=float(meta["global_min_db"]),
     )
 
@@ -1468,7 +1486,7 @@ def evaluate_model_on_val_test(
 def load_model_from_weights(weights_path: Path, *, setb_size: int, device: torch.device) -> CNNBeamPredictor:
     """Restore a saved model checkpoint onto the requested device."""
     model = CNNBeamPredictor(setb_size=int(setb_size), num_classes=32)
-    model.load_state_dict(torch.load(weights_path, map_location="cpu"), strict=True)
+    model.load_state_dict(load_torch_state_dict(weights_path), strict=True)
     model.to(device)
     return model
 
@@ -1927,7 +1945,7 @@ def run_finetune_stage(
     if bl_ag_weights is None:
         candidates = ", ".join(str(path) for path in bl_ag_checkpoint_candidates(run_dir))
         raise FileNotFoundError(f"FT requires BL-AG weights at one of these paths: {candidates}")
-    initial_state = torch.load(bl_ag_weights, map_location="cpu")
+    initial_state = load_torch_state_dict(bl_ag_weights)
 
     bl_ag_rows: Dict[int, Dict[str, str]] = {}
     bl_ag_eval_path = run_dir / "jobs" / "baseline" / "bl_ag_eval" / "rows.csv"
@@ -1951,7 +1969,7 @@ def run_finetune_stage(
                 sampling=str(config.training.ft_sampling),
             )
             atomic_save_npy(train_indices_path, np.asarray(train_indices, dtype=np.int64))
-        train_indices = np.load(train_indices_path)
+        train_indices = load_npy(train_indices_path)
         train_sample_count = int(len(train_indices))
 
         clean_train_features = prepared.features[train_indices]

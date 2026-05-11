@@ -57,5 +57,5 @@ def normalize_family_token(value: object) -> str:
 
 
 def load_config(path: str | Path) -> dict:
-    with Path(path).open() as handle:
+    with Path(path).open(encoding="utf-8") as handle:
         return json.load(handle)
