@@ -4,7 +4,8 @@
   "description": "Blocking V5 release containing source code, packaged result tables, selected manuscript plots, the packaged dataset tensor, stored baseline weights, and verification instructions for the sparse beam-level blockage experiments.",
   "creators": [
     {
-      "name": "Fatima, Maheen"
+      "name": "Fatima, Maheen",
+      "orcid": "0009-0001-1471-3760"
     },
     {
       "name": "Saeidi, Mohammad Amin"
